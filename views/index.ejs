@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 10</title>
+    <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Proxima+Nova" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Date of Death</th>
+        <th><button onclick="window.location.href='/new'">New Author</button></th>
+    </tr>
+    <tr class="bordered">
+        <td><br><hr><br></td>
+        <td><br><hr><br></td>
+        <td><br><hr><br></td>
+        <td><br><hr><br></td>
+        <td><br><hr><br></td>
+        <td><br><hr><br></td>
+    </tr>
+    <% authors.forEach(function(author) { %>
+        <tr>
+            <td><%= author.id %></td>
+            <td><%= author.first_name %></td>
+            <td><%= author.last_name %></td>
+            <td><%= author.dob %></td>
+            <td><%= author.dod %></td>
+            <td>
+                <button id="edit" class="btn btn-primary" onclick="window.location.href='/edit'" data-toggle="modal" data-target="#editModal">Edit</button>
+                <a class="btn btn-delete btn-danger" data-authorId="{{authorId}}" data-toggle="modal" data-target="#deleteModal">Delete</a>
+            </td>
+        </tr>
+    <% }); %>
+
+</table>
+
+<!-- Edit Modal -->
+<!--<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <table>-->
+<!--                    <tbody>-->
+<!--                    <tr>-->
+<!--                        <td><label>authorId</label></td>-->
+<!--                        <td>-->
+<!--                            <input id="authorId" type="text" value="{{data.authorId}}" />-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td><label>quote</label></td>-->
+<!--                        <td><textarea rows="3" id="authorName">{{data.authorName}}</textarea></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td><label>category</label></td>-->
+<!--                        <td><input id="category" type="text" value="{{data.category}}" /></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td></td>-->
+<!--                        <td>-->
+<!--                            <button id="saveButton" class="btn btn-primary">Save</button>-->
+<!--                            <button id="cancelButton" class="btn btn-secondary">Cancel</button>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td><label>id</label></td>-->
+<!--                        <td><input id="id" type="text" disabled /></td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--                <button id="editCancelButton" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--                <button id="editSaveButton" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+<!--                <h5 class="modal-title" id="exampleModalLabel">Delete</h5>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                ...-->
+<!--            </div>-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    // $(".btn-edit").on("click", function(e) {
+    //     console.log("Author ID is", $(e.target).data('authorid'));
+    // })
+
+    // const mysql = require('mysql');
+    // function onDelete(first, last){
+    //     if (confirm("Are you sure you want to delete the author " + first + " " + last + "? This cannot be undone.")) {
+    //         const connection = mysql.createConnection({
+    //             host: 'er7lx9km02rjyf3n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    //             user: 'jqu8aralz7x2d3f8',
+    //             password: 'j33452dd1h4o9zil',
+    //             database: 'upz1sirhhzk031zd'
+    //         });
+    //         connection.connect();
+    //         connection.query(`DELETE from author WHERE first_name = '${first}' AND last_name = '${last}'`,
+    //             function(error, results, fields) {
+    //                 if (error) throw error;
+    //                 console.log("deleted");
+    //             });
+    //         connection.query(`SELECT * from author`,
+    //             function(error, results, fields) {
+    //                 if (error) throw error;
+    //                 res.render('index.ejs', {
+    //                     title: 'Lab 10',
+    //                     authors: results
+    //                 });
+    //             });
+    //     }else {
+    //         console.log("nothing");
+    //     }
+    // }
+</script>
