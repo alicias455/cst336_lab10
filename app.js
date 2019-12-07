@@ -217,9 +217,9 @@ app.delete('/delete', function(req, res, next) {
 });
 
 // running server
-// app.listen("3000", "0.0.0.0", function() {
-//     console.log("Express Server is Running...")
-// });
+app.listen("3000", "0.0.0.0", function() {
+    console.log("Express Server is Running...")
+});
 
 app.listen(process.env.PORT, process.env.IP, function() {
     console.log("Running Express Server...");
