@@ -10,6 +10,17 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.0.1",
-    "express": "^4.17.1"
-  }
+    "express": "^4.17.1",
+    "hbs": "^4.0.6",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alicias455/cst336_lab10.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alicias455/cst336_lab10/issues"
+  },
+  "homepage": "https://github.com/alicias455/cst336_lab10#readme"
 }
